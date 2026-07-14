@@ -44,3 +44,16 @@ input:focus {
 .search-area span {
   margin-left: 10px;
 }
+
+.settings {
+  display: flex;
+  flex-direction: row;
+}
+
+.settings-tooltip {
+  position: relative;
+}
+
+.profile-img {
+  border-radius: 50%;
+}
