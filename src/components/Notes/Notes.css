@@ -1,0 +1,48 @@
+.notes {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
+  padding: 24px;
+  max-width: 900px;
+  margin: 0 auto;
+  align-items: start;
+}
+  
+.note {
+  background-color: #fff;
+  border: 1px solid #e0e1e0;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: min-width 0;
+  word-wrap: break-word;
+  transition: box-shadow 0.2s ease;
+}
+.note:hover {
+  box-shadow: 0 1px 3px 0 rgba(60, 64, 67, 0.3), 0 4px 8px 3px rgba(60, 64, 67, 0.15);
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin: 0 0 10px 0;
+  color: #202124;
+}
+
+.text {
+  font-size: 0.9rem;
+  color: #5f6368;
+  white-space: pre-wrap;
+  word-break: break-word;
+  margin-bottom: 20px;
+}
+
+.note .note-footer {
+  display: none;
+  
+}
+.note:hover .note-footer {
+  display: flex;
+  gap: 8px;
+  margin-top: auto;
+  visibility: visible;
+}

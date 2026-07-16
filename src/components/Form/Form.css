@@ -55,9 +55,9 @@
   width: 100%;
 }
 
-.active-form {
+/* .active-form {
   display: none;
-}
+} */
 
 .form {
   display: flex;
@@ -101,3 +101,18 @@
 .small-icon {
   font-size: 1.25rem;
 } 
+
+.checklist-item {
+  align-items: center;
+}
+
+.list-item-input {
+  font-size: 0.9rem;
+}
+
+.drag-indicator {
+  align-items: start;
+}
+.text-format {
+  font-size: 1.4rem;
+}

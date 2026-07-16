@@ -5,9 +5,9 @@ export default function Navbar() {
     return (
         <nav>
             <div className="logo-area">
-                <div class="tooltip">
-                    <span class="material-symbols-outlined hover" style={{color: '#535555'}}>menu</span>
-                    <span class="tooltip-text">Main Menu</span>
+                <div className="tooltip">
+                    <span className="material-symbols-outlined hover" style={{color: '#535555'}}>menu</span>
+                    <span className="tooltip-text">Main Menu</span>
 			    </div>
                 <img className="logo" src="/logo.png" alt="Google Keep Logo" style={{width: '40px', height: '40px'}}/>
                 <div className="logo-text">Keep</div>
