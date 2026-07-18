@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./Form.css";
+import { uid } from 'uid';
 
 export default function Form(props) {
     const [title, setTitle] = useState("");
@@ -10,9 +11,15 @@ export default function Form(props) {
     const textChangeHandler = (event) => {setText(event.target.value);}
     const submitClickHandler = (event) => {
         event.preventDefault();
+        const note = {
+            id: uid(),
+            title,
+            text,
+        };
         props.addNote(note);
         setTitle("");
         setText("");
+        setIsActiveForm(false);
     }
 
     const formClickHandler = () => {
@@ -21,51 +28,21 @@ export default function Form(props) {
 
     return (
         <main>
-            {!isActiveForm ? (
-                <div className="form-container inactive-form" onClick={formClickHandler}>
-                    <form>
-                        <div className="placeholder">
-                            <input type="text" className="note-text" placeholder="Take a note..." />
-                        </div>
-                        <div className="form-actions">
-                        <div className="tooltip">
-                            <span className="material-symbols-outlined hover checkbox">check_box</span>
-                            <span className="tooltip-text">New List</span>
-                        </div>
+                <div className="form-container active-form" onClick={formClickHandler}>
+                    <form onSubmit={submitClickHandler} className={isActiveForm ? "form" : ""}>
+                        {isActiveForm && (
+                            <div className="title">
+                            <input onChange={titleChangeHandler} value={title} type="text" className="note-title" placeholder="Title" />
                             <div className="tooltip">
-                            <span className="material-symbols-outlined hover" style={{color: '#535555'}}>brush</span>
-                            <span className="tooltip-text">New note with drawing</span>
+                                <span className="material-symbols-outlined hover small-icon" style={{color: '#5d5f5f'}}>keep</span>
+                                <span className="tooltip-text">Pin Note</span>
                             </div>
-                            <div className="tooltip">
-                                <span className="material-symbols-outlined hover">image</span>
-                                <span className="tooltip-text">New note with image</span>
                             </div>
-                        </div>
-                    </form>
-                </div>
-
-            ) : (
-                <div className="form-container active-form">
-                    <form onSubmit={submitClickHandler} className="form" id="form">
-                        <div className="title">
-                        <input onChange={titleChangeHandler} value={title} id="note-title" type="text" className="note-title" placeholder="Title" />
-                        <div className="tooltip">
-                            <span className="material-symbols-outlined hover small-icon" style={{color: '#5d5f5f'}}>keep</span>
-                            <span className="tooltip-text">Pin Note</span>
-                        </div>
-                        </div>
-                        <input onChange={textChangeHandler} value={text} id="note-text" type="text" className="note-text" placeholder="Take a note..." />
+                        )}
+                        <input onChange={textChangeHandler} value={text} type="text" className="note-text" placeholder="Take a note..." />
                         
-                        {/* <div id="checklist-container" style={{display: 'block', padding: '8px 0', border: '1px solid #d3d4d4'}}>
-                            <div className="checklist-item" style={{display: 'flex', gap: '10px', width: '598px'}}>
-                                <span className="material-symbols-outlined drag-indicator" style={{color: '#5d5f5f', cursor: 'move'}}>drag_indicator</span>
-                                <input type="checkbox" style={{cursor: 'pointer'}} />
-                                <input type="text" className="list-item-input" placeholder="List item" style={{border: 'none', outline: 'none', width: '100%'}} />
-                                <span className="material-symbols-outlined" style={{color: 'black', cursor: 'pointer'}}>close</span>
-                            </div>
-                        </div> */}
-                
-                        <div className="form-actions">
+                        {isActiveForm ? (
+                            <div className="form-actions">
                             <div className="icons">
                                 <div className="tooltip">
                                     <span className="material-symbols-outlined hover small-icon text-format" style={{color: '#444746'}}>text_format</span>
@@ -107,9 +84,37 @@ export default function Form(props) {
                             </div>
                             <button className="close-btn">Close</button>
                         </div>
+                        ) : (
+                            <div className="form-actions">
+                        <div className="tooltip">
+                            <span className="material-symbols-outlined hover checkbox">check_box</span>
+                            <span className="tooltip-text">New List</span>
+                        </div>
+                            <div className="tooltip">
+                            <span className="material-symbols-outlined hover" style={{color: '#535555'}}>brush</span>
+                            <span className="tooltip-text">New note with drawing</span>
+                            </div>
+                            <div className="tooltip">
+                                <span className="material-symbols-outlined hover">image</span>
+                                <span className="tooltip-text">New note with image</span>
+                            </div>
+                        </div>
+                        )
+                        }
+
+                        {/* <div id="checklist-container" style={{display: 'block', padding: '8px 0', border: '1px solid #d3d4d4'}}>
+                            <div className="checklist-item" style={{display: 'flex', gap: '10px', width: '598px'}}>
+                                <span className="material-symbols-outlined drag-indicator" style={{color: '#5d5f5f', cursor: 'move'}}>drag_indicator</span>
+                                <input type="checkbox" style={{cursor: 'pointer'}} />
+                                <input type="text" className="list-item-input" placeholder="List item" style={{border: 'none', outline: 'none', width: '100%'}} />
+                                <span className="material-symbols-outlined" style={{color: 'black', cursor: 'pointer'}}>close</span>
+                            </div>
+                        </div> */}
+                
+                        
                     </form>
                 </div>
-            )}
+           
 
         </main>
     );
