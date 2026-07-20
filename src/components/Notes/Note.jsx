@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 
 export default function Notes(props) {
-    const [title, setTitle] = useState(props.title);
-    const [text, setText] = useState(props.text);
+    const { toggleModal, note, setSelectedNotes } = props;
     const [isHover, setisHover] = useState(false);
 
     const noteClickHandler = () => {
-        setTitle(title);
-        setText(text);
+        toggleModal();
+        setSelectedNotes(note);
     }
 
     const hoverNoteHandler = () => {
@@ -16,15 +15,18 @@ export default function Notes(props) {
     const hoverOutHandler = () => {
         setisHover(false);
     };
-    const deleteHandler = () => props.deleteNote(props.id);
-
+    const deleteHandler = (e) => {
+        e.stopPropagation();
+        props.deleteNote(note.id);
+    };
+    
     return (
         <div className="note" id ={props.id} onClick={noteClickHandler} onMouseOver={hoverNoteHandler} onMouseOut={hoverOutHandler}>
             {isHover && (
                 <span className="material-symbols-outlined check-circle">check_circle</span>
             )}
-                <div className="title">{title}</div>
-                <div className="text">{text}</div>
+                <div className="title">{note.title}</div>
+                <div className="text">{note.text}</div>
                     {isHover && (
                         <div className="note-footer" style={{visibility: isHover ? 'visible' : 'hidden'}}>
                             <div className="tooltip">

@@ -3,23 +3,34 @@ import "./Form.css";
 import { uid } from 'uid';
 
 export default function Form(props) {
-    const [title, setTitle] = useState("");
-    const [text, setText] = useState("");
-    const [isActiveForm, setIsActiveForm] = useState(false);
+    const { edit, selectedNote, toggleModal } = props;
+    const [title, setTitle] = useState((edit && selectedNote?.title) || "");
+    const [text, setText] = useState((edit && selectedNote?.text) || "");
+    const [isActiveForm, setIsActiveForm] = useState(edit);
 
-    const titleChangeHandler = (event) => {setTitle(event.target.value);}
-    const textChangeHandler = (event) => {setText(event.target.value);}
+    const titleChangeHandler = (event) => setTitle(event.target.value);
+    const textChangeHandler = (event) => {setText(event.target.value), setIsActiveForm(true);};
     const submitClickHandler = (event) => {
         event.preventDefault();
-        const note = {
-            id: uid(),
-            title,
-            text,
-        };
-        props.addNote(note);
+
+        if(!edit) {
+            props.addNote({
+                id: uid(),
+                title,
+                text,
+            });
+            setIsActiveForm(false);
+        } else {
+            props.editNote({
+                id: selectedNote?.id,
+                title,
+                text,
+            });
+            toggleModal();   
+        }
+        
         setTitle("");
         setText("");
-        setIsActiveForm(false);
     }
 
     const formClickHandler = () => {
