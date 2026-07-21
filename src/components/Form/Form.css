@@ -55,10 +55,6 @@
   width: 100%;
 }
 
-/* .active-form {
-  display: none;
-} */
-
 .form {
   display: flex;
   flex-direction: column;
@@ -100,7 +96,7 @@
 
 .small-icon {
   font-size: 1.25rem;
-} 
+}
 
 .checklist-item {
   align-items: center;
@@ -115,4 +111,81 @@
 }
 .text-format {
   font-size: 1.4rem;
+}
+
+.reminder-menu-wrapper {
+  position: relative;
+}
+
+.reminder-trigger {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.reminder-popover {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  min-width: 190px;
+  background: #fff;
+  border: 1px solid #e0e1e0;
+  border-radius: 8px;
+  box-shadow: 0 1px 2px 0 rgba(60,64,67,0.302), 0 2px 6px 2px rgba(60,64,67,0.149);
+  padding: 8px 0;
+  z-index: 20;
+}
+
+.reminder-title {
+  padding: 6px 16px 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #202124;
+}
+
+.reminder-option {
+  display: block;
+  width: 100%;
+  border: none;
+  background: none;
+  padding: 10px 16px;
+  text-align: left;
+  cursor: pointer;
+  font-size: 0.95rem;
+  color: #202124;
+}
+
+.reminder-option:hover {
+  background: #f1f3f4;
+}
+
+.selected-reminder {
+  display: inline-block;
+  margin: 8px 0 0 10px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: #fef0c3;
+  color: #5f370e;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.app.dark-theme .reminder-popover {
+  background: #292a2d;
+  border-color: #3c4043;
+}
+
+.app.dark-theme .reminder-title,
+.app.dark-theme .reminder-option,
+.app.dark-theme .selected-reminder {
+  color: #e8eaed;
+}
+
+.app.dark-theme .reminder-option:hover {
+  background: #3c4043;
+}
+
+.app.dark-theme .selected-reminder {
+  background: #5f6368;
 }

@@ -1,0 +1,1 @@
+{"name":"google-keep-react","version":"1.0.0","description":"","main":"index.js","scripts":{"dev":"vite","build":"vite build","preview":"vite preview"},"keywords":[],"author":"","license":"ISC","type":"commonjs","dependencies":{"react":"^19.2.7","react-dom":"^19.2.7"},"readme":"ERROR: No README data found!","_id":"google-keep-react@1.0.0"}

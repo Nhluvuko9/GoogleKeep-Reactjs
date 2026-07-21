@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import "./Navbar.css";
 
-export default function Navbar() {
+export default function Navbar({ isDarkMode, toggleDarkMode }) {
+    const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+
+    const toggleSettingsMenu = () => {
+        setIsSettingsOpen((prevState) => !prevState);
+    };
+
     return (
-        <nav>
+        <nav className={isDarkMode ? "dark" : ""}>
             <div className="logo-area">
                 <div className="tooltip">
                     <span className="material-symbols-outlined hover" style={{color: '#535555'}}>menu</span>
@@ -31,27 +37,33 @@ export default function Navbar() {
                 </div>
 
                 <div className="settings-tooltip">
-                    <div className="tooltip settings-trigger">
+                    <div className="tooltip settings-trigger" onClick={toggleSettingsMenu}>
                         <span className="material-symbols-outlined hover">settings</span>
                         <span className="tooltip-text">Settings</span>
                     </div>
-                    {/* <div className="settings-menu">
-                        <ul>
-                        <li>Settings</li>
-                        <li>Enable dark theme</li>
-                        <li>Send Feedback</li>
-                        <li>Help</li>
-                        <li>App Downloads</li>
-                        <li>Keybord shortcuts</li>
-                        </ul>
-                    </div> */}
+                    {isSettingsOpen && (
+                        <div className="settings-menu">
+                            <ul>
+                                <li className="settings-title">Settings</li>
+                                <li>
+                                    <button type="button" className="settings-option" onClick={toggleDarkMode}>
+                                        {isDarkMode ? "Disable dark theme" : "Enable dark theme"}
+                                    </button>
+                                </li>
+                                <li><button type="button" className="settings-option">Send Feedback</button></li>
+                                <li><button type="button" className="settings-option">Help</button></li>
+                                <li><button type="button" className="settings-option">App Downloads</button></li>
+                                <li><button type="button" className="settings-option">Keyboard shortcuts</button></li>
+                            </ul>
+                        </div>
+                    )}
                 </div>
                 <div className="tooltip">
                     <span className="material-symbols-outlined hover" style={{color: '#535555'}}>apps</span>
                     <span className="tooltip-text">Google apps</span>
                 </div>
-                <div className="tooltip">
-                    <span className="material-symbols-outlined hover profile-img"><img src="/profile-circle.jpg" alt="Account" style={{width: '30px', height: '30px'}}/></span>
+                <div className="tooltip account">
+                    <span className="material-symbols-outlined hover profile-img"><img src="/profile-circle.jpg" alt="Account" style={{width: '30px', height: '30px', borderRadius: '50%'}}/></span>
                     <span className="tooltip-text google-acc">Google accounts 
                     <p>Nhluvuko Baloyi</p>
                     <p>nhluvukot9@gmail.com</p>

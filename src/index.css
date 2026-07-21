@@ -7,6 +7,116 @@
     font-family: 'Roboto', sans-serif;
 }
 
+body {
+  background-color: #fff;
+  color: #202124;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.app {
+  min-height: 100vh;
+  background-color: #fff;
+  color: #202124;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.app.dark-theme {
+  background-color: #202124;
+  color: #e8eaed;
+}
+
+.app.dark-theme nav {
+  background-color: #202124;
+  border-bottom-color: #3c4043;
+}
+
+.app.dark-theme .search-area {
+  background: #525355;
+}
+
+.app.dark-theme .search-area input {
+  background: #525355;
+  color: #e8eaed;
+}
+
+.app.dark-theme .search-area input::placeholder {
+  color: #dadce0;
+}
+
+.app.dark-theme .sidebar {
+  background-color: #202124;
+  color: #e8eaed;
+}
+
+.app.dark-theme .sidebar-item .sidebar-text,
+.app.dark-theme .sidebar p {
+  color: #e8eaed;
+}
+
+.app.dark-theme .sidebar-item:hover:not(.active) {
+  background-color: #3c4043;
+}
+
+.app.dark-theme .active {
+  background-color: #5f6368;
+  color: #fff;
+}
+
+.app.dark-theme .active:hover {
+  background-color: #5f6368;
+}
+
+.app.dark-theme .form-container {
+  background: #292a2d;
+  border-color: #3c4043;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.4), 0 2px 6px 2px rgba(0, 0, 0, 0.3);
+}
+
+.app.dark-theme .form-container form,
+.app.dark-theme .close-btn,
+.app.dark-theme .note-title,
+.app.dark-theme .note-text {
+  color: #e8eaed;
+}
+
+.app.dark-theme .note-title,
+.app.dark-theme .note-text {
+  background: transparent;
+}
+
+.app.dark-theme .note-title::placeholder,
+.app.dark-theme .note-text::placeholder {
+  color: #9aa0a6;
+}
+
+.app.dark-theme .close-btn:hover {
+  background: #3c4043;
+}
+
+.app.dark-theme .note {
+  background: #292a2d;
+  border-color: #3c4043;
+  color: #e8eaed;
+}
+
+.app.dark-theme .text {
+  color: #c7c9cb;
+}
+
+.app.dark-theme .notes p {
+  color: #9aa0a6;
+}
+
+.app.dark-theme .hover:hover {
+  background: #3c4043;
+  color: #e8eaed;
+}
+
+.app.dark-theme .tooltip-text {
+  background-color: #f1f3f4;
+  color: #202124;
+}
+
 /* HOVER EFFECTS */
 .material-symbols-outlined {
   padding: 8px;
